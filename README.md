@@ -10,7 +10,7 @@ Para gerar uma api node js Express nova basta instalar o pacote via npm:
    
    - Para gerar uma estrutura similar a do projeto basta rodar esse comando no terminal
      
-     Sem Auth:
-      -> express-generator-typescript {nome_do_projeto}
-     Com Auth:
-      -> express-generator-typescript --with-auth {nome_do_projeto}
+    Sem Auth:
+        -> express-generator-typescript {nome_do_projeto}
+    Com Auth:
+        -> express-generator-typescript --with-auth {nome_do_projeto}
