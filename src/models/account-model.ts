@@ -49,6 +49,7 @@ export class AccountModel implements AccountDao {
     account = aggregate[0]
 
     console.log(aggregate[0])
+    
 
     return account
   }
