@@ -9,6 +9,8 @@ import 'express-async-errors';
 
 import BaseRouter from './routes';
 import logger from '@shared/Logger';
+import { MongoHelper } from './infra/db/mongoDb/mongo-helper';
+import env from './infra/env'
 
 const app = express();
 const { BAD_REQUEST } = StatusCodes;
@@ -34,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add APIs
-app.use('/api', BaseRouter);
+app.use('/', BaseRouter);
 
 // Print API errors
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -58,6 +60,12 @@ app.use(express.static(staticDir));
 app.get('*', (req: Request, res: Response) => {
     res.sendFile('index.html', {root: viewsDir});
 });
+
+MongoHelper.connect(env.mongoUrl)
+  .then(async () => {
+    console.log('success')
+  })
+  .catch(console.error)
 
 // Export express instance
 export default app;
